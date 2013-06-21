@@ -13,17 +13,17 @@ class Scrabble
   }
   end
 
-  def play(word, bounes=:single)
+  def play(word, bonus=:single)
     word.downcase!
     sum = score_by_rules(word)
-    sum *= bounes_check bounes
+    sum *= bonus_check bonus
   end
 
-  def bounes_check(bounes)
-  bounes = 1 if bounes == :single
-  bounes = 2 if bounes == :double
-  bounes = 3 if bounes == :triple
-  return bounes
+  def bonus_check(bonus)
+  bonus = 1 if bonus == :single
+  bonus = 2 if bonus == :double
+  bonus = 3 if bonus == :triple
+  return bonus
 end
 
 def score_by_rules(word)
