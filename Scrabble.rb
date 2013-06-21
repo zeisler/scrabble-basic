@@ -13,7 +13,7 @@ class Scrabble
   }
   end
 
-  def play(word, bonus=:single)
+  def play_word(word, bonus=:single)
     word.downcase!
     sum = score_by_rules(word)
     sum *= bonus_check bonus

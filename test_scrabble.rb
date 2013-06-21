@@ -7,21 +7,21 @@ describe "Scrabble" do
   before do
     @scrabble = Scrabble.new
   end
-  describe "play" do
+  describe "play_word" do
     it "must return 14 for word cabbage" do
-      @scrabble.play("cabbage").must_equal 14
+      @scrabble.play_word("cabbage").must_equal 14
     end
     it "must return 14 for Cabbage no matter case" do
-      @scrabble.play("Cabbage").must_equal 14
+      @scrabble.play_word("Cabbage").must_equal 14
     end
     it "must return 14 for word cabbage as a single" do
-      @scrabble.play("cabbage", :single).must_equal 14
+      @scrabble.play_word("cabbage", :single).must_equal 14
     end
     it "must return 14 for word cabbage as a double" do
-      @scrabble.play("cabbage", :double).must_equal 28
+      @scrabble.play_word("cabbage", :double).must_equal 28
     end
     it "must return 14 for word cabbage as a triple" do
-      @scrabble.play("cabbage", :triple).must_equal 42
+      @scrabble.play_word("cabbage", :triple).must_equal 42
     end
   end
 
@@ -34,6 +34,12 @@ describe "Scrabble" do
     end
     it "must return 3 for bonus triple" do
       @scrabble.bonus_check(:triple).must_equal 3
+    end
+  end
+
+  describe "score_by_rules" do
+    it "must return 14 for word cabbage" do
+      @scrabble.score_by_rules("cabbage").must_equal 14
     end
   end
 
