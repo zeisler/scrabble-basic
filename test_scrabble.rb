@@ -7,6 +7,19 @@ describe "Scrabble" do
   before do
     @scrabble = Scrabble.new
   end
+
+  it "takes in new rules other than default" do
+    rules = {
+      /[aeioulnrst]/ => 1,
+      /[dg]/ => 4,
+      /[bcmp]/ => 3,
+      /[fhvwy]/ => 6,
+      /[k]/ => 6,
+      /[jx]/ => 8,
+      /[qz]/ => 20
+    }
+    Scrabble.new(rules).rules.must_equal rules
+  end
   describe "play_word" do
     it "must return 14 for word cabbage" do
       @scrabble.play_word("cabbage").must_equal 14
@@ -46,6 +59,9 @@ describe "Scrabble" do
   describe "play_words" do
     it "takes multiple words and returns a score" do
       @scrabble.play_words("takes multiple words").must_equal 30
+    end
+    it "ignores punctuation for scoring" do
+      @scrabble.play_words("takes , multiple . words !?").must_equal 30
     end
   end
 
