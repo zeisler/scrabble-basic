@@ -1,8 +1,8 @@
-
 class Scrabble
-
-  def initialize
-    @rules = {
+  attr_reader :rules
+  def initialize(rules = nil)
+    if rules.nil?
+      @rules = {
       /[aeioulnrst]/ => 1,
       /[dg]/ => 2,
       /[bcmp]/ => 3,
@@ -10,7 +10,10 @@ class Scrabble
       /[k]/ => 5,
       /[jx]/ => 8,
       /[qz]/ => 10
-  }
+    }
+    else
+      @rules = rules
+    end
   end
 
   def play_word(word, bonus=:single)
@@ -34,13 +37,13 @@ class Scrabble
   return bonus
 end
 
-def score_by_rules(word)
-  sum = 0
-  @rules.each do |rule, score|
-    sum += (score * word.scan(rule).length)
+  def score_by_rules(word)
+    sum = 0
+    @rules.each do |rule, score|
+      sum += (score * word.scan(rule).length)
+    end
+      return sum
   end
-    return sum
-end
 
 end
 
