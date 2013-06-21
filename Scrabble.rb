@@ -20,7 +20,11 @@ class Scrabble
   end
 
   def play_words(words)
-
+    sum = 0
+    words.split(' ').each do |word|
+      sum += play_word(word)
+    end
+    return sum
   end
 
   def bonus_check(bonus)
