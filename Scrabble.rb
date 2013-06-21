@@ -19,6 +19,10 @@ class Scrabble
     sum *= bonus_check bonus
   end
 
+  def play_words(words)
+
+  end
+
   def bonus_check(bonus)
   bonus = 1 if bonus == :single
   bonus = 2 if bonus == :double

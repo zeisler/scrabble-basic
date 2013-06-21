@@ -43,4 +43,10 @@ describe "Scrabble" do
     end
   end
 
+  describe "play_words" do
+    it "takes multiple words and returns a score" do
+      @scrabble.play_words("takes multiple words").must_equal 45
+    end
+  end
+
 end
