@@ -31,11 +31,10 @@ class Scrabble
   end
 
   def bonus_check(bonus)
-  bonus = 1 if bonus == :single
-  bonus = 2 if bonus == :double
-  bonus = 3 if bonus == :triple
-  return bonus
-end
+    return 1 if bonus == :single
+    return 2 if bonus == :double
+    return 3 if bonus == :triple
+  end
 
   def score_by_rules(word)
     sum = 0
