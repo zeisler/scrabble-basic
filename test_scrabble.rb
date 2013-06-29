@@ -1,4 +1,4 @@
-require_relative 'Scrabble.rb'
+require_relative 'lib/Scrabble.rb'
 
 require 'minitest/autorun'
 

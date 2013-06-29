@@ -1,54 +1,17 @@
-class Scrabble
-  attr_reader :rules
-  def initialize(rules = nil)
-    if rules.nil?
-      @rules = {
-      /[aeioulnrst]/ => 1,
-      /[dg]/ => 2,
-      /[bcmp]/ => 3,
-      /[fhvwy]/ => 4,
-      /[k]/ => 5,
-      /[jx]/ => 8,
-      /[qz]/ => 10
-    }
-    else
-      @rules = rules
+require_relative 'lib/UI.rb'
+require_relative 'lib/Scrabble.rb'
+class Play_scrabble
+
+  def self.run(ui=UI, run_loop=true)
+     scrabble = Scrabble.new
+     ui.display("Welcome to Scrabble!")
+    loop do
+      ui.display("Enter a word or a list of words to get score")
+      input = ui.get_input
+      score = scrabble.play_words(input)
+      ui.display("Your score is:")
+      ui.display(score)
+      return true if run_loop == false
     end
   end
-
-  def play_word(word, bonus=:single)
-    word.downcase!
-    sum = score_by_rules(word)
-    sum *= bonus_check bonus
-  end
-
-  def play_words(words)
-    sum = 0
-    words.split(' ').each do |word|
-      sum += play_word(word)
-    end
-    return sum
-  end
-
-  def bonus_check(bonus)
-  bonus = 1 if bonus == :single
-  bonus = 2 if bonus == :double
-  bonus = 3 if bonus == :triple
-  return bonus
 end
-
-  def score_by_rules(word)
-    sum = 0
-    @rules.each do |rule, score|
-      sum += (score * word.scan(rule).length)
-    end
-      return sum
-  end
-
-end
-
-
-
-
-
-
